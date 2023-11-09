@@ -6,7 +6,7 @@ const MovieTrendingList = ({ movies }) => {
         <ul>
             {movies.map(movie =>
                 <MovieItem
-                    key={movie.id}
+                    id={movie.id}
                     poster={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
                     title={movie.title}
                     // showModal={showModal}

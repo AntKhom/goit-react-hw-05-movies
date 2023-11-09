@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const MovieItem = ({ id, title, poster}) => {
+const MovieItem = ({ id, title, poster }) => {
     return (
-        <li key={id}>
+        <Link key={id} to={`/movies/${id}`}>
             <h2>{title}</h2>
             <img src={poster} alt={title} />
-        </li>
+        </Link>
     )
 }
 
