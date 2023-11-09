@@ -4,15 +4,15 @@ import { fetchMovieReviews } from "movieApi";
 import Loader from "./Loader";
 
 const Review = () => {
-    const { movieReviews, setMovieReviews } = useState({});
-    const { loader, setLoader } = useState(false);
+    const [ movieReviews, setMovieReviews ] = useState([]);
+    const [ loader, setLoader ] = useState(false);
     const { movieId } = useParams();
 
     useEffect(() => {
         setLoader(true);
         fetchMovieReviews(movieId)
-            .then(({ reviews }) => {
-                setMovieReviews(reviews);
+            .then(({results}) => {
+                setMovieReviews(results);
             })
             .finally(() => {
                 setLoader(false)
@@ -25,10 +25,10 @@ const Review = () => {
                 movieReviews.map(({ id, author, content }) => {
                     return (
                         <li key={id}>
-                            <li>
+                            <p>
                                 <b> Author: {author}</b>
-                            </li>
-                            <li>{content}</li>
+                            </p>
+                            <p>{content}</p>
                         </li>
                     );
                 })
