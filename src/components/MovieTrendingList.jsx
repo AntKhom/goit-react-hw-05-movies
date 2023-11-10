@@ -1,7 +1,7 @@
 import React from "react";
 import MovieItem from "./MovieItem";
 
-const MovieTrendingList = ({ movies }) => {
+const MovieList = ({ movies }) => {
     return (
         <ul>
             {movies.map(movie =>
@@ -16,4 +16,4 @@ const MovieTrendingList = ({ movies }) => {
     )
 }
 
-export default MovieTrendingList;
+export default MovieList;
