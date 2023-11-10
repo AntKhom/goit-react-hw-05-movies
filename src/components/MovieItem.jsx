@@ -5,7 +5,7 @@ const MovieItem = ({ id, title, poster }) => {
     return (
         <Link key={id} to={`/movies/${id}`}>
             <h2>{title}</h2>
-            <img src={poster} alt={title} />
+            <img src={poster} alt={title} width='250px' />
         </Link>
     )
 }

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Searchbar = ({onSubmit}) => {
@@ -11,7 +13,7 @@ const Searchbar = ({onSubmit}) => {
     const submitHandler = e => {
         e.preventDefault();
         if (query.trim() === '') {
-            // toast.error('Please enter')
+            toast.error('Please enter query')
             return;
         }
         onSubmit(query);
@@ -33,6 +35,7 @@ const Searchbar = ({onSubmit}) => {
                     onChange={changeHandler}
                 />
             </form>
+            <ToastContainer/>
         </>
     )
 }

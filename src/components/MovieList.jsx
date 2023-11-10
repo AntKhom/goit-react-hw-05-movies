@@ -1,5 +1,8 @@
 import React from "react";
 import MovieItem from "./MovieItem";
+import defaultPoster from '../img/no-image-placeholder.svg'
+
+
 
 const MovieList = ({ movies }) => {
     return (
@@ -7,7 +10,10 @@ const MovieList = ({ movies }) => {
             {movies.map(movie =>
                 <MovieItem
                     id={movie.id}
-                    poster={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                    poster={movie.poster_path ?
+                        `https://image.tmdb.org/t/p/w200${movie.poster_path}`:
+                         defaultPoster    
+                    }
                     title={movie.title}
                     // showModal={showModal}
                 />

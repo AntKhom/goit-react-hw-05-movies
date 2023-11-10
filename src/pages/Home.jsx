@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchTrendingMovies } from '../movieApi';
-import MovieList from '../components/MovieTrendingList';
+import MovieList from '../components/MovieList';
 import Loader  from '../components/Loader';
 
 const Home = () => {

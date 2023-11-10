@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Searchbar from "components/Searchbar";
 import { searchMovie } from "movieApi";
 import Loader from "components/Loader";
-import MovieList from "components/MovieTrendingList";
+import MovieList from "components/MovieList";
+
 
 const Movies = () => {
     const [query, setQuery] = useState('');
@@ -12,11 +15,14 @@ const Movies = () => {
     
 
     useEffect(() => {
+        if (!query) {
+            return;
+        }
         setLoader(true);
         searchMovie(query)
             .then(res => {
-                if (res.results === 0) {
-                    // toast(`Sorry, for ${query} query nothing was found`);
+                if (res.results.length === 0) {
+                    toast(`Sorry, for ${query} query nothing was found`);
                     console.log('No movies found');
                 }
                 setMovies(res.results);
@@ -41,12 +47,13 @@ const Movies = () => {
             <h2>Search movies</h2>
             {error && <h2>{error.message}</h2>}
             <Searchbar value={query} onSubmit={submitHandler} />
-            {movies.length > 0 ? (
-                <MovieList />
-            ) : (
+            {(error || movies.length === 0) ? (
                 <p> Sorry, for {query} query nothing was found</p>
+            ) : (
+                <MovieList movies={movies} />
             )}
-        {loader && <Loader/>}
+            {loader && <Loader />}
+            <ToastContainer/>
         </>
     )
 }
