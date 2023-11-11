@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { Links, Posters, Titles } from './MovieItem.styled';
 
 const MovieItem = ({ id, title, poster }) => {
     const location = useLocation();
     return (
-        <Link key={id} to={`/movies/${id}`} state={{ from: location }}>
-            <img src={poster} alt={title} width='250px' />
-            <h2>{title}</h2>
-        </Link>
+        <Links key={id} to={`/movies/${id}`} state={{ from: location }}>
+            <Posters src={poster} alt={title}/>
+            <Titles>{title}</Titles>
+        </Links>
     )
 }
 

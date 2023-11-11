@@ -2,11 +2,13 @@ import React from "react";
 import MovieItem from "./MovieItem";
 import defaultPoster from '../img/poster-placeholder.webp'
 
+import {List} from "./MovieList.styled"
+
 
 
 const MovieList = ({ movies }) => {
     return (
-        <ul>
+        <List>
             {movies.map(movie =>
                 <MovieItem
                     id={movie.id}
@@ -15,10 +17,9 @@ const MovieList = ({ movies }) => {
                          defaultPoster    
                     }
                     title={movie.title}
-                    // showModal={showModal}
                 />
             )}
-        </ul>
+        </List>
     )
 }
 

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchMovieCredits } from "movieApi";
 import personPlaceholder from "../img/person-placeholder.webp";
 import Loader from "./Loader";
+import { Foto, Item, List, Name } from "./Casts.styled";
 
 const Cast = () => {
     const [movieCast, setMovieCast] = useState({});
@@ -23,29 +24,29 @@ const Cast = () => {
 
 
     return (
-    <>
+    <List>
       {movieCast.length > 0 ? (
         movieCast.map(({ id, profile_path, character, name }) => (
-          <li key={id}>
+          <Item key={id}>
             {profile_path ? (
-              <img
-                src={`https://image.tmdb.org/t/p/w200${profile_path}`}
+              <Foto
+                src={`https://image.tmdb.org/t/p/w300${profile_path}`}
                 alt={name}
               />
             ) : (
-                <img width='200px' height='300px'
+                <Foto
                     src={personPlaceholder}
                     alt={name}
                 />
             )}
-            <p>{name}</p>
-            <p>Character : {character}</p>
-          </li>
+            <Name>{name}</Name>
+            <p><b>Character:</b> {character}</p>
+          </Item>
         ))) : (
             <p> Sorry, there isn't any info</p>
         )}
     {loader && <Loader />}
-    </>
+    </List>
   );
 }
 
