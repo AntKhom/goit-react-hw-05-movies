@@ -48,7 +48,7 @@ const Movies = () => {
             {error && <h2>{error.message}</h2>}
             <Searchbar value={query} onSubmit={submitHandler} />
             {(error || movies.length === 0) ? (
-                <p> Sorry, for {query} query nothing was found</p>
+                <p>Search your movie</p>
             ) : (
                 <MovieList movies={movies} />
             )}

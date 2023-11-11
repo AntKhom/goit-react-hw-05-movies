@@ -1,6 +1,6 @@
 import React from "react";
 import MovieItem from "./MovieItem";
-import defaultPoster from '../img/no-image-placeholder.svg'
+import defaultPoster from '../img/poster-placeholder.webp'
 
 
 
