@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom"; 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Searchbar from "components/Searchbar";
@@ -8,21 +9,23 @@ import MovieList from "components/MovieList";
 
 
 const Movies = () => {
-    const [query, setQuery] = useState('');
+    const [searchParams, setSearchParams] = useSearchParams()
     const [movies, setMovies] = useState([]);
     const [loader, setLoader] = useState(false);
     const [error, setError] = useState(null);
     
+    const movie = searchParams.get('query') ?? '';
 
     useEffect(() => {
-        if (!query) {
+        if (!movie) {
+            console.log('No query');
             return;
         }
         setLoader(true);
-        searchMovie(query)
+        searchMovie(movie)
             .then(res => {
                 if (res.results.length === 0) {
-                    toast(`Sorry, for ${query} query nothing was found`);
+                    toast(`Sorry, for ${movie} query nothing was found`);
                     console.log('No movies found');
                 }
                 setMovies(res.results);
@@ -31,10 +34,10 @@ const Movies = () => {
             .finally(() => {
                 setLoader(false);
             });
-    }, [query]);
+    }, [movie]);
 
     const submitHandler = query => {
-        setQuery(query);
+        setSearchParams({query});
         console.log(query);
         setMovies([]);
     // setPage(1);
@@ -46,7 +49,7 @@ const Movies = () => {
         <>
             <h2>Search movies</h2>
             {error && <h2>{error.message}</h2>}
-            <Searchbar value={query} onSubmit={submitHandler} />
+            <Searchbar value={movie} onSubmit={submitHandler} />
             {(error || movies.length === 0) ? (
                 <p>Search your movie</p>
             ) : (
