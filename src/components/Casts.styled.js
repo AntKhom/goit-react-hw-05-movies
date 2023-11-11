@@ -14,7 +14,13 @@ export const List = styled.ul`
     }
 `
 export const Item = styled.li`
-    width: calc((100% - 40px)/5);
+    @media screen and ${devices.tablet} {
+        width: calc((100% - 40px)/3);
+    }
+
+    @media screen and ${devices.laptop} {
+        width: calc((100% - 40px)/5);
+    }
 `
 export const Foto = styled.img`
     width: 100%;

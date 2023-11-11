@@ -1,16 +1,23 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-
+import { devices } from "components/MovieList.styled";
+  
 export const MovieInfo = styled.section`
-    display: flex;
+    // display: flex;
     padding-bottom: 16px;
     margin-top: 16px;
     border-bottom: 1px solid;
     
+    @media screen and ${devices.tablet} {
+         display: flex;
+    }
+`
+export const Wrapper = styled.div`
+    margin-right: 16px;
 `
 
 export const Poster = styled.img`
-    margin-right: 16px;
+    width: 100%;
 `
 export const Title = styled.h2`
     margin-top: 0;

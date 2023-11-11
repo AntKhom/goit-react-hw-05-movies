@@ -5,7 +5,7 @@ import { fetchMovieById } from '../movieApi';
 import Loader  from '../components/Loader';
 import BackButton from 'components/BackButton';
 import defaultPoster from '../img/poster-placeholder.webp'
-import { List, MovieInfo, Poster, Title, Link } from './MovieDetails.styled';
+import { List, MovieInfo, Poster, Title, Link, Wrapper } from './MovieDetails.styled';
 
 
 
@@ -30,7 +30,7 @@ const MovieDetails = () => {
   return <>
       <BackButton to={backLink} />
       <MovieInfo >
-          <div>
+          <Wrapper>
               {poster_path ? 
               <Poster
               src={`https://image.tmdb.org/t/p/w300${poster_path}`}
@@ -41,7 +41,7 @@ const MovieDetails = () => {
               alt={'defaultPoster'}
               />
           }
-          </div>
+          </Wrapper>
           <div>
             {title && (
               <Title>
