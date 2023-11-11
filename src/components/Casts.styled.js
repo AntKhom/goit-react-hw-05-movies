@@ -1,12 +1,17 @@
 import styled from "styled-components";
+import { devices } from "./MovieList.styled";
 
 export const List = styled.ul`
-    display: flex;
+    // display: flex;
     flex-wrap: wrap;
     gap: 10px;
     /* margin-top: 10px; */
     padding: 10px;
     justify-content: center;
+
+    @media screen and ${devices.tablet} {
+         display: flex;
+    }
 `
 export const Item = styled.li`
     width: calc((100% - 40px)/5);
